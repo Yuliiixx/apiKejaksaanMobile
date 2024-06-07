@@ -1,0 +1,163 @@
+Input: 
+Data: 
+Input: ----------------------------111088211181619845351448
+Content-Disposition: form-data; name="name"
+
+yuli
+----------------------------111088211181619845351448
+Content-Disposition: form-data; name="email"
+
+yuli@gmail.com
+----------------------------111088211181619845351448
+Content-Disposition: form-data; name="phone"
+
+081266673392
+----------------------------111088211181619845351448
+Content-Disposition: form-data; name="ktp_number"
+
+130283723902
+----------------------------111088211181619845351448
+Content-Disposition: form-data; name="password"
+
+12345
+----------------------------111088211181619845351448
+Content-Disposition: form-data; name="address"
+
+padang
+----------------------------111088211181619845351448
+Content-Disposition: form-data; name="role"
+
+user
+----------------------------111088211181619845351448--
+
+Data: 
+Input: 
+Data: Array
+(
+    [id] => 
+    [name] => 
+    [email] => 
+    [phone] => 
+    [ktp_number] => 
+    [password] => 
+    [address] => 
+    [role] => 
+)
+
+Input: 
+Data: Array
+(
+    [id] => 
+    [name] => 
+    [email] => 
+    [phone] => 
+    [ktp_number] => 
+    [password] => 
+    [address] => 
+    [role] => 
+)
+
+Input: 
+Data: Array
+(
+    [id] => 
+    [name] => 
+    [email] => 
+    [phone] => 
+    [ktp_number] => 
+    [password] => 
+    [address] => 
+    [role] => 
+)
+
+Input: 
+Data: Array
+(
+    [id] => 
+    [name] => 
+    [email] => 
+    [phone] => 
+    [ktp_number] => 
+    [password] => 
+    [address] => 
+    [role] => 
+)
+
+Input: 
+Data: Array
+(
+    [id] => 
+    [name] => 
+    [email] => 
+    [phone] => 
+    [ktp_number] => 
+    [password] => 
+    [address] => 
+    [role] => 
+)
+
+Input: 
+Data: Array
+(
+    [id] => 
+    [name] => 
+    [email] => 
+    [phone] => 
+    [ktp_number] => 
+    [password] => 
+    [address] => 
+    [role] => 
+)
+
+Data: Array
+(
+    [id] => 
+    [name] => 
+    [email] => 
+    [phone] => 
+    [ktp_number] => 
+    [password] => 
+    [address] => 
+    [role] => 
+)
+
+Data: Array
+(
+    [id] => 1
+    [name] => yuli2
+    [email] => yuli2@gmail.com
+    [phone] => 081266673392
+    [ktp_number] => 130283723902
+    [password] => 12345
+    [address] => padang
+    [role] => user
+)
+
+ID: 3
+Data: Array
+(
+    [id] => 1
+    [name] => yuli
+    [email] => yuli@gmail.com
+    [phone] => 081266673392
+    [ktp_number] => 130283723902
+    [password] => 12345
+    [address] => padang
+    [role] => user
+)
+
+Input: 
+Data: Array
+(
+    [email] => 
+    [password] => 
+)
+
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
