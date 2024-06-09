@@ -161,3 +161,275 @@ Raw Input: Array
 
 Email: yuli@gmail.com
 Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => admin@gmail.com
+    [password] => 12345
+)
+
+Email: admin@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Name: nadira
+Email: nadira@gmail.com
+Phone: 08129374628
+KTP: 1392837294
+Password: 12345
+Address: padang
+Role: user
+Name: rizka
+Email: rizka@gmail.com
+Phone: 08129374628
+KTP: 1392837294
+Password: 12345
+Address: padang
+Role: user
+Raw Input: Array
+(
+    [email] => rizka@gmail.com
+    [password] => 12345
+)
+
+Email: rizka@gmail.com
+Password: 12345
+Name: riski
+Email: riski@gmail.com
+Phone: 082917283727
+KTP: 138297284924
+Password: 12345
+Address: padang
+Role: admin
+Raw Input: Array
+(
+    [email] => riski@gmail.com
+    [password] => 12345
+)
+
+Email: riski@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => riski@gmail.comm
+    [password] => 12345
+)
+
+Email: riski@gmail.comm
+Password: 12345
+Raw Input: Array
+(
+    [email] => riski@gmail.com
+    [password] => 12345
+)
+
+Email: riski@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => riski@gmail.com
+    [password] => 12345
+)
+
+Email: riski@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => riski@gmail.com
+    [password] => 12345
+)
+
+Email: riski@gmail.com
+Password: 12345
+Raw Input: Array
+(
+    [email] => yuli@gmail.com
+    [password] => 12345
+)
+
+Email: yuli@gmail.com
+Password: 12345
+Data: Array
+(
+    [id] => 1
+    [name] => yuli2
+    [email] => yuli2@gmail.com
+    [phone] => 081266673392
+    [ktp_number] => 130283723902
+    [password] => 12345
+    [address] => padang
+    [role] => user
+)
+
+Name: nadira
+Email: nadira@gmail.com
+Phone: 081266673330
+KTP: 130283723930
+Password: 12345
+Address: padang
+Role: user
+Name: user
+Email: user@gmail.com
+Phone: 081266673330
+KTP: 130283723930
+Password: 12345
+Address: padang
+Role: user
+ID: 13

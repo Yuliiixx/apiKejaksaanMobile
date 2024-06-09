@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 include 'config.php';
 
 // Ambil data dari $_POST
@@ -9,6 +13,9 @@ $ktp_number = isset($_POST['ktp_number']) ? $_POST['ktp_number'] : null;
 $password = isset($_POST['password']) ? $_POST['password'] : null;
 $address = isset($_POST['address']) ? $_POST['address'] : null;
 $role = isset($_POST['role']) ? $_POST['role'] : null;
+
+// Debug: Tulis input ke dalam log
+file_put_contents('debug.log', "Name: " . $name . "\nEmail: " . $email . "\nPhone: " . $phone . "\nKTP: " . $ktp_number . "\nPassword: " . $password . "\nAddress: " . $address . "\nRole: " . $role . "\n", FILE_APPEND);
 
 // Lakukan validasi data
 if (is_null($name) || is_null($email) || is_null($phone) || is_null($ktp_number) || is_null($password) || is_null($address) || is_null($role)) {

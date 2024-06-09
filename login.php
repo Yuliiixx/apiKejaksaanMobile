@@ -1,11 +1,16 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 include 'config.php';
 
 // Periksa apakah data dikirim sebagai form-data atau JSON mentah
-if ($_SERVER['CONTENT_TYPE'] === 'application/json') {
-    $input = file_get_contents("php://input");
-    $data = json_decode($input, true);
-} else {
+$input = file_get_contents("php://input");
+$data = json_decode($input, true);
+
+if (json_last_error() !== JSON_ERROR_NONE) {
+    // Jika tidak ada input JSON, coba ambil dari form-data
     $data = $_POST;
 }
 
