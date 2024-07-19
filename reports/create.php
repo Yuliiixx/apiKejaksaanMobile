@@ -14,41 +14,59 @@ function respond($code, $message) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Check if files and form data are set
-    if (!isset($_FILES['ktp']) || !isset($_FILES['document']) || !isset($_POST['user_id']) || !isset($_POST['report_type']) || !isset($_POST['nama']) || !isset($_POST['nohp']) || !isset($_POST['report']) || !isset($_POST['status'])) {
-        respond(400, "Data is incomplete.");
+    $required_fields = ['ktp', 'document', 'user_id', 'report_type', 'nama', 'nohp', 'report', 'status'];
+    $missing_fields = [];
+
+    foreach ($required_fields as $field) {
+        if ($field === 'ktp' || $field === 'document') {
+            if (!isset($_FILES[$field])) {
+                $missing_fields[] = $field;
+            }
+        } else {
+            if (!isset($_POST[$field])) {
+                $missing_fields[] = $field;
+            }
+        }
     }
 
-    // Validate report_type value
+    if (!empty($missing_fields)) {
+        respond(400, "Data tidak lengkap. Field yang hilang: " . implode(", ", $missing_fields));
+    }
+
+    // Validasi nilai report_type
     $valid_report_types = ['Pegawai', 'Korupsi', 'Hukum', 'Aliran', 'Pilkada'];
     if (!in_array($_POST['report_type'], $valid_report_types)) {
-        respond(400, "Invalid report_type value.");
+        respond(400, "Nilai report_type tidak valid.");
     }
 
-    // File upload paths
+    // Jalur unggahan file
     $ktpPath = '../uploads/' . 'ktp_' . $_POST['nama'] . '.pdf';
     $documentPath = '../uploads/' . 'dokument_' . $_POST['nama'] . '.pdf';
 
-    // Move uploaded files
+    // Pindahkan file yang diunggah
     if (!move_uploaded_file($_FILES['ktp']['tmp_name'], $ktpPath) || !move_uploaded_file($_FILES['document']['tmp_name'], $documentPath)) {
-        respond(503, "Unable to upload files.");
+        respond(503, "Tidak dapat mengunggah file.");
     }
 
-    // Prepare and bind
+    // Siapkan dan ikat
     $stmt = $conn->prepare("INSERT INTO tb_reports (user_id, report_type, nama, nohp, ktp, report, document, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+    if ($stmt === false) {
+        respond(503, "Gagal menyiapkan statement: " . $conn->error);
+    }
+
     $stmt->bind_param("isssssss", $_POST['user_id'], $_POST['report_type'], $_POST['nama'], $_POST['nohp'], $ktpPath, $_POST['report'], $documentPath, $_POST['status']);
 
-    // Execute the statement
+    // Eksekusi statement
     if ($stmt->execute()) {
-        respond(201, "Report was created.");
+        respond(201, "Laporan berhasil dibuat.");
     } else {
-        respond(503, "Unable to create report.");
+        respond(503, "Tidak dapat membuat laporan: " . $stmt->error);
     }
 
-    // Close the statement
+    // Tutup statement
     $stmt->close();
 } else {
-    respond(405, "Request method not allowed.");
+    respond(405, "Metode permintaan tidak diizinkan.");
 }
 
 $conn->close();

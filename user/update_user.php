@@ -1,50 +1,69 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
 include 'config.php';
-
-// Ambil data dari $_POST
-$id = isset($_POST['id']) ? $_POST['id'] : null;
-$name = isset($_POST['name']) ? $_POST['name'] : null;
-$email = isset($_POST['email']) ? $_POST['email'] : null;
-$phone = isset($_POST['phone']) ? $_POST['phone'] : null;
-$ktp_number = isset($_POST['ktp_number']) ? $_POST['ktp_number'] : null;
-$password = isset($_POST['password']) ? $_POST['password'] : null;
-$address = isset($_POST['address']) ? $_POST['address'] : null;
-$role = isset($_POST['role']) ? $_POST['role'] : null;
-
-// Debug: Tulis data yang diterima ke dalam log
-file_put_contents('debug.log', "Data: " . print_r(compact('id', 'name', 'email', 'phone', 'ktp_number', 'password', 'address', 'role'), true) . "\n", FILE_APPEND);
-
-// Lakukan validasi data
-if (is_null($id) || is_null($name) || is_null($email) || is_null($phone) || is_null($ktp_number) || is_null($address) || is_null($role)) {
-    echo json_encode(["message" => "All fields are required"]);
+           
+function respond($code, $message) {
+    http_response_code($code);
+    echo json_encode(array("message" => $message));
     exit();
 }
 
-// Hash password jika disediakan
-$hashed_password = null;
-if (!is_null($password)) {
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $required_fields = ['id', 'name', 'email', 'phone', 'ktp_number', 'address', 'password'];
+    $missing_fields = [];
 
-// Siapkan statement SQL
-if (is_null($hashed_password)) {
-    $sql = "UPDATE tb_users SET name=?, email=?, phone=?, ktp_number=?, address=?, role=? WHERE id=?";
+    foreach ($required_fields as $field) {
+        if (!isset($_POST[$field]) || empty($_POST[$field])) {
+            $missing_fields[] = $field;
+        }
+    }
+
+    if (!empty($missing_fields)) {
+        respond(400, "Data tidak lengkap. Field yang hilang: " . implode(", ", $missing_fields));
+    }
+
+    // Log the received data
+    error_log("Received Data: " . json_encode($_POST));
+
+    $id_user = $_POST['id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $ktp_number = $_POST['ktp_number'];
+    $address = $_POST['address'];
+    $password = $_POST['password'];
+
+    // Hash the password before storing it in the database
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+    $sql = "UPDATE tb_users SET 
+            name = ?, email = ?, phone = ?, ktp_number = ?, address = ?, password = ?
+            WHERE id = ?";
+
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssi", $name, $email, $phone, $ktp_number, $address, $role, $id);
-} else {
-    $sql = "UPDATE tb_users SET name=?, email=?, phone=?, ktp_number=?, password=?, address=?, role=? WHERE id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssi", $name, $email, $phone, $ktp_number, $hashed_password, $address, $role, $id);
-}
+    if ($stmt === false) {
+        error_log("Failed to prepare statement: " . $conn->error);
+        respond(503, "Gagal menyiapkan statement: " . $conn->error);
+    }
 
-// Eksekusi statement SQL
-if ($stmt->execute()) {
-    echo json_encode(["message" => "User updated"]);
-} else {
-    echo json_encode(["message" => "Error: " . $stmt->error]);
-}
+    error_log("SQL Query: " . $sql);
 
-// Tutup statement dan koneksi
-$stmt->close();
-$conn->close();
+    $stmt->bind_param("ssssssi", $name, $email, $phone, $ktp_number, $address, $hashed_password, $id_user);
+    if ($stmt->execute()) {
+        respond(200, "Data pengguna berhasil diperbarui.");
+    } else {
+        error_log("Failed to execute statement: " . $stmt->error);
+        respond(503, "Gagal memperbarui data pengguna: " . $stmt->error);
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    respond(405, "Metode tidak diizinkan.");
+}
 ?>
